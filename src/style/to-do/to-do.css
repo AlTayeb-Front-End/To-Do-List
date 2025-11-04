@@ -1,0 +1,11 @@
+.to-do-container {
+  text-align: center;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+.to-do {
+  border: 1px solid;
+  padding: 10px 30px;
+  border-radius: 10px;
+}

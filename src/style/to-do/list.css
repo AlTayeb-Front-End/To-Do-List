@@ -1,0 +1,29 @@
+.list {
+  padding: 0;
+  list-style-type: decimal;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.list > li > .list-item {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.list > li > .list-item > p {
+  margin: 0;
+}
+
+.list > li > .action-buttons > .remove {
+  margin-right: 5px;
+}
