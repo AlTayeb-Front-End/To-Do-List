@@ -3,6 +3,39 @@ import "../../style/to-do/add.css";
 import { RiHeartAdd2Line } from "react-icons/ri";
 export const AddItem = ({ list, setList }: any) => {
   const [item, setItem] = useState("");
+
+  function addItem() {
+    // make sure that input field not impaty
+    if (item === "" || item === null || item === undefined) return null;
+
+    setList((prevList: any) => {
+      if (prevList.length === 0)
+        return [
+          {
+            id: prevList.length + 1,
+            content: item,
+          },
+        ];
+      else if (prevList[0].id !== 0)
+        return [
+          ...prevList,
+          {
+            id: list.length + 1,
+            content: item,
+          },
+        ];
+      // make default item > first item
+      else
+        return [
+          {
+            id: prevList.length,
+            content: item,
+          },
+        ];
+    });
+    setItem("");
+  }
+
   return (
     <article className="add-container">
       <input
@@ -18,30 +51,7 @@ export const AddItem = ({ list, setList }: any) => {
       <button
         style={{ fontSize: "18px", color: "lawngreen" }}
         onClick={() => {
-          // make sure that input field not impaty
-          item === "" || item === null || item === undefined
-            ? null
-            : setList(() => {
-                // if first item is default item with id = 0 , content = null here
-                // i handle it by adding the first item from user insted of the default item
-                // else add the next item correct
-                return list[0].id !== 0
-                  ? [
-                      ...list,
-                      {
-                        id: list.length + 1,
-                        content: item,
-                      },
-                    ]
-                  : // make default item > first item
-                    [
-                      {
-                        id: list.length,
-                        content: item,
-                      },
-                    ];
-              });
-          setItem("");
+          addItem();
         }}
       >
         <RiHeartAdd2Line />
