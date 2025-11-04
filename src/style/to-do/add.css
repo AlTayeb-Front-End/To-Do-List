@@ -1,10 +1,10 @@
-article.search-container {
-  flex-shrink: 1;
+article.add-container {
+  flex-grow: 1;
   display: flex;
   align-items: center;
 }
 
-article.search-container > input {
+article.add-container > input {
   display: inline-block;
   width: 100%;
 }

@@ -2,7 +2,7 @@ import "../../style/to-do/search.css";
 import { RiSearchEyeLine } from "react-icons/ri";
 export const Search = () => {
   return (
-    <article>
+    <article className="search-container">
       <input
         type="text"
         className="search"
@@ -11,7 +11,6 @@ export const Search = () => {
       <button style={{ fontSize: "18px" }}>
         <RiSearchEyeLine />
       </button>
-      <hr />
     </article>
   );
 };

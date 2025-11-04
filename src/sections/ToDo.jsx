@@ -5,17 +5,18 @@ import { Search } from "../components/to-do/Search";
 import "../style/to-do/to-do.css";
 import { useState } from "react";
 export default function ToDoList() {
-  const [list, setList] = useState([
-    { id: 1, content: "item1" },
-    { id: 2, content: "item2" },
-  ]);
+  const [list, setList] = useState([{ id: 0, content: null }]);
 
   return (
     <section className="to-do-container">
       <h2>To Do List ❤️</h2>
       <section className="to-do">
-        <Search list={list} setList={setList} />
-        <AddItem list={list} setList={setList} />
+        <section className="add-search-fields">
+          <AddItem list={list} setList={setList} />
+          <hr />
+          <Search list={list} setList={setList} />
+        </section>
+        <hr />
         <List list={list} setList={setList} />
         <Actions list={list} setList={setList} />
       </section>
