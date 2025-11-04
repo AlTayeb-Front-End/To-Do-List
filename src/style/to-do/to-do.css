@@ -1,5 +1,4 @@
 .to-do-container {
-  text-align: center;
   width: fit-content;
   margin: 20px auto;
 }
@@ -8,4 +7,34 @@
   border: 1px solid;
   padding: 10px 30px;
   border-radius: 10px;
+  width: 800px;
+}
+
+.to-do-container > h2 {
+  width: fit-content;
+  margin: 0 auto 20px;
+}
+
+article input {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-right: 10px;
+}
+
+.add-search-fields {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.add-search-fields hr {
+  border: 1px solid red;
+  height: 28px;
+}
+
+.to-do > .actions {
+  width: fit-content;
+  margin: auto;
 }
