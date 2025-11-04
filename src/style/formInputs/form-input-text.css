@@ -1,0 +1,19 @@
+article.form-input-text-article {
+  padding: 10px;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  width: calc((100% / 2) - 32px);
+}
+
+label.form-input-text-label {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+input.form-input-text {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
