@@ -5,8 +5,7 @@ import { Search } from "../components/to-do/Search";
 import "../style/to-do/to-do.css";
 import { useState } from "react";
 export default function ToDoList() {
-  const [list, setList] = useState([{ id: 0, content: null }]);
-
+  const [list, setList] = useState([{ id: 0, order: 0, content: null }]);
   return (
     <section className="to-do-container">
       <h2>To Do List ❤️</h2>
