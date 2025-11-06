@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../../style/to-do/add.css";
 import { RiHeartAdd2Line } from "react-icons/ri";
-import randomNumber from "../../utils/randomNumber";
 export const AddItem = ({ list, setList }: any) => {
   const [item, setItem] = useState("");
 
@@ -13,17 +12,15 @@ export const AddItem = ({ list, setList }: any) => {
       if (prevList.length === 0)
         return [
           {
-            id: randomNumber(),
-            order: prevList.length + 1,
+            id: prevList.length + 1,
             content: item,
           },
         ];
-      else if (prevList[0].order !== 0)
+      else if (prevList[0].id !== 0)
         return [
           ...prevList,
           {
-            id: randomNumber(),
-            order: list.length + 1,
+            id: list.length + 1,
             content: item,
           },
         ];
@@ -31,14 +28,14 @@ export const AddItem = ({ list, setList }: any) => {
       else
         return [
           {
-            id: randomNumber(),
-            order: prevList.length,
+            id: prevList.length,
             content: item,
           },
         ];
     });
     setItem("");
   }
+
   return (
     <article className="add-container">
       <input
