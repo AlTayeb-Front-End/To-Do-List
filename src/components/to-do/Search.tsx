@@ -1,4 +1,4 @@
-import "../../style/to-do/search.css";
+import "../../style/to-do/form-inputs.css";
 import { RiSearchEyeLine } from "react-icons/ri";
 export const Search = () => {
   return (

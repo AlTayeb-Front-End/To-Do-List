@@ -1,61 +1,71 @@
 import { useState } from "react";
-import "../../style/to-do/add.css";
+import "../../style/to-do/form-inputs.css";
 import { RiHeartAdd2Line } from "react-icons/ri";
-export const AddItem = ({ list, setList }: any) => {
-  const [item, setItem] = useState("");
-
-  function addItem() {
+export const UpdateItem = ({ list, setList }: any) => {
+  const itemToUpdate = list.filter(
+    (listItem: any) => listItem.canUpdate === true
+  )[0];
+  const [item, setItem] = useState(itemToUpdate.content);
+  function confirmUpdate() {
     // make sure that input field not impaty
     if (item === "" || item === null || item === undefined) return null;
 
     setList((prevList: any) => {
-      if (prevList.length === 0)
-        return [
-          {
-            id: prevList.length + 1,
-            content: item,
-          },
-        ];
-      else if (prevList[0].id !== 0)
-        return [
-          ...prevList,
-          {
-            id: list.length + 1,
-            content: item,
-          },
-        ];
-      // make default item > first item
-      else
-        return [
-          {
-            id: prevList.length,
-            content: item,
-          },
-        ];
+      const updatedList = [...prevList];
+      // get index of selected item and update it's value in array
+      updatedList[
+        updatedList.findIndex((listItem) => listItem.id === itemToUpdate.id)
+      ] = {
+        ...itemToUpdate,
+        content: item,
+        canUpdate: false,
+      };
+      return updatedList;
     });
-    setItem("");
+  }
+
+  function cancelUpdate() {
+    window.confirm("Are you sure for cancle item update ?")
+      ? setList((prevList: any) => {
+          const updatedList = [...prevList];
+          // get index of selected item and update it's value in array
+          updatedList[
+            updatedList.findIndex((listItem) => listItem.id === itemToUpdate.id)
+          ] = {
+            ...itemToUpdate,
+            canUpdate: false,
+          };
+          return updatedList;
+        })
+      : null;
   }
 
   return (
-    <article className="add-container">
+    <article className="update-container">
       <input
         type="text"
-        className="add"
-        id="item"
-        placeholder="Enter List Item"
+        className="update"
+        id="update-item"
+        placeholder="Update Your Data"
         value={item}
         onChange={(event) => {
           setItem(event?.target.value);
         }}
       />
-      <button
-        style={{ fontSize: "18px", color: "lawngreen" }}
-        onClick={() => {
-          addItem();
-        }}
-      >
-        <RiHeartAdd2Line />
-      </button>
+      <div className="update-actions">
+        <button
+          style={{ fontSize: "18px", color: "green" }}
+          onClick={confirmUpdate}
+        >
+          <RiHeartAdd2Line />
+        </button>
+        <button
+          style={{ fontSize: "18px", color: "red" }}
+          onClick={cancelUpdate}
+        >
+          <RiHeartAdd2Line />
+        </button>
+      </div>
     </article>
   );
 };

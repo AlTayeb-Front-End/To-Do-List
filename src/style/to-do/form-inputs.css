@@ -1,0 +1,26 @@
+article.add-container,
+article.search-container,
+article.update-container {
+  display: flex;
+  align-items: center;
+}
+
+article.add-container {
+  flex-grow: 1;
+}
+
+article.search-container {
+  flex-shrink: 1;
+}
+
+article.add-container > input,
+article.search-container > input,
+article.update-container > input {
+  display: inline-block;
+  width: 100%;
+}
+
+article.update-container .update-actions {
+  display: flex;
+  gap: 10px;
+}
