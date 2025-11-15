@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../style/to-do/add.css";
+import "../../style/to-do/form-inputs.css";
 import { RiHeartAdd2Line } from "react-icons/ri";
 import randomNumber from "../../utils/randomNumber";
 export const AddItem = ({ list, setList }: any) => {
@@ -13,6 +13,7 @@ export const AddItem = ({ list, setList }: any) => {
       if (prevList.length === 0)
         return [
           {
+            canUpdate: false,
             id: randomNumber(),
             order: prevList.length + 1,
             content: item,
@@ -22,6 +23,7 @@ export const AddItem = ({ list, setList }: any) => {
         return [
           ...prevList,
           {
+            canUpdate: false,
             id: randomNumber(),
             order: list.length + 1,
             content: item,
@@ -31,6 +33,7 @@ export const AddItem = ({ list, setList }: any) => {
       else
         return [
           {
+            canUpdate: false,
             id: randomNumber(),
             order: prevList.length,
             content: item,
