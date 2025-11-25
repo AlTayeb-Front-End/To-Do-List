@@ -9,6 +9,8 @@ export default function ToDoList() {
   const [list, setList] = useState([
     { id: 0, order: 0, content: null, canUpdate: false },
   ]);
+  const [searchList, setSearchList] = useState([{}]);
+  const [isSearch, setIsSearch] = useState(false);
   return (
     <section className="to-do-container">
       <h2>To Do List ❤️</h2>
@@ -16,10 +18,18 @@ export default function ToDoList() {
         <section className="add-search-fields">
           <AddItem list={list} setList={setList} />
           <hr />
-          <Search list={list} setList={setList} />
+          <Search
+            list={list}
+            setSearchList={setSearchList}
+            setIsSearch={setIsSearch}
+          />
         </section>
         <hr />
-        <List list={list} setList={setList} />
+        {isSearch ? (
+          <List list={searchList} />
+        ) : (
+          <List list={list} setList={setList} />
+        )}
         <Actions list={list} setList={setList} />
       </section>
     </section>
